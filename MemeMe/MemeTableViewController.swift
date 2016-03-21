@@ -12,19 +12,23 @@ import UIKit
 class MemeTableViewController: UITableViewController {
     
     var memes: [Meme]!
+    var object : UIApplicationDelegate?
+    var appDelegate : AppDelegate?
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "Sent Memes"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Add, target: self, action: "presentMemeEditor")
+         object = UIApplication.sharedApplication().delegate
+         appDelegate = object as! AppDelegate
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        let object = UIApplication.sharedApplication().delegate
-        let appDelegate = object as! AppDelegate
-        memes = appDelegate.memes
+        
+        memes = appDelegate!.memes
         if (memes.count == 0) {
             presentMemeEditor()
         }
@@ -43,11 +47,20 @@ class MemeTableViewController: UITableViewController {
     }
     
     
-    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath)
+    {
+        if editingStyle == .Delete
+        {
+            
+            appDelegate!.memes.removeAtIndex(indexPath.row)
+            memes.removeAtIndex(indexPath.row)
+            self.tableView.reloadData()
+        }
+    }
     // MARK:- Table view delegate and datasource methods
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("MemeCell") as! UITableViewCell!
+        let cell = tableView.dequeueReusableCellWithIdentifier("MemeCell") as UITableViewCell!
         let customImageView = cell.viewWithTag(1) as! UIImageView
         let customTopLabel = cell.viewWithTag(2) as! UILabel
         let customBottomLabel = cell.viewWithTag(3) as! UILabel
@@ -56,6 +69,9 @@ class MemeTableViewController: UITableViewController {
         customBottomLabel.text =  memes[indexPath.row].bottomText
         return cell
     }
+    
+    
+
     
     
     

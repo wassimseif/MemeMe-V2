@@ -183,7 +183,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func saveMeme() {
         //Create the meme
-        var meme = Meme(topText:topTextField.text!, bottomText:bottomTextField.text!, image:pickedImageView.image!, memedImage:generateMemedImage())
+        let meme = Meme(topText:topTextField.text!, bottomText:bottomTextField.text!, image:pickedImageView.image!, memedImage:generateMemedImage())
         
 
         // Add it to the memes array in the Application Delegate
