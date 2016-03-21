@@ -33,21 +33,25 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         NSStrokeWidthAttributeName : -3.0
     ]
     
+    func setTextFields(textField : UITextField){
+        textField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = NSTextAlignment.Center
+        if textField == bottomTextField{
+            textField.text = "BOTTOM"
+            return
+        }
+        textField.text = "TOP"
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         cameraButton.enabled = UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.Camera)
         view.backgroundColor = UIColor.blackColor()
-        // top text field
-        topTextField.delegate = self
-        topTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.text = "TOP"
-        topTextField.textAlignment = NSTextAlignment.Center;
-        // bottom text field
-        bottomTextField.delegate = self
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.text = "BOTTOM"
-        bottomTextField.textAlignment = NSTextAlignment.Center;
+        // setting the textFields
+        
+        setTextFields(bottomTextField)
+        setTextFields(topTextField)
         // share button
         if (pickedImageView.image == nil) {
             shareButton.enabled = false
@@ -108,11 +112,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     // IMAGE PICKER FUNCTIONS
     
     @IBAction func pickImageFromCamera(sender: UIBarButtonItem) {
-        pickImage(UIImagePickerControllerSourceType.Camera)
+        pickImage(.Camera)
     }
 
     @IBAction func pickImageFromAlbum(sender: UIBarButtonItem) {
-        pickImage(UIImagePickerControllerSourceType.PhotoLibrary)
+        pickImage(.PhotoLibrary)
     }
     
     func pickImage(sourceType:UIImagePickerControllerSourceType) {

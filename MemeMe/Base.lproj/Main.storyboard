@@ -173,6 +173,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K0p-Hq-ChN">
+                                <rect key="frame" x="20" y="44" width="560" height="512"/>
+                            </imageView>
+                            <navigationBar contentMode="scaleToFill" restorationIdentifier="MemeEditorViewController" translatesAutoresizingMaskIntoConstraints="NO" id="stN-1t-uNx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <items>
+                                    <navigationItem id="XuK-B5-c1X">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="6ru-sC-2TF">
+                                            <connections>
+                                                <action selector="shareMeme:" destination="vXZ-lx-hvc" id="hJo-xO-x97"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Z4u-Cg-1FI">
+                                            <connections>
+                                                <action selector="dismissViewController:" destination="vXZ-lx-hvc" id="yFk-Pa-lto"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cI5-oL-5AB">
                                 <rect key="frame" x="4" y="556" width="592" height="44"/>
                                 <items>
@@ -204,31 +224,11 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" restorationIdentifier="MemeEditorViewController" translatesAutoresizingMaskIntoConstraints="NO" id="stN-1t-uNx">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <items>
-                                    <navigationItem id="XuK-B5-c1X">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="6ru-sC-2TF">
-                                            <connections>
-                                                <action selector="shareMeme:" destination="vXZ-lx-hvc" id="hJo-xO-x97"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="Z4u-Cg-1FI">
-                                            <connections>
-                                                <action selector="dismissViewController:" destination="vXZ-lx-hvc" id="yFk-Pa-lto"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="This is the top label" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RVM-xY-YVU">
                                 <rect key="frame" x="4" y="76" width="592" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K0p-Hq-ChN">
-                                <rect key="frame" x="20" y="44" width="560" height="512"/>
-                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
