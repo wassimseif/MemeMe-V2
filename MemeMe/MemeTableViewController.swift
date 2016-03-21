@@ -33,12 +33,18 @@ class MemeTableViewController: UITableViewController {
         }
     }
     
+    /**
+     Presents the Meme editor view controller
+     */
     func presentMemeEditor() {
-        var memeEditorController:ViewController
-        memeEditorController = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! ViewController
+        var memeEditorController:MemeEditorViewController
+        memeEditorController = self.storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
         presentViewController(memeEditorController, animated: true, completion: nil)
     }
     
+    
+    
+    // MARK:- Table view delegate and datasource methods
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("MemeCell") as! UITableViewCell!

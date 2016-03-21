@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var pickedImageView: UIImageView!
     
@@ -52,12 +52,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         if (pickedImageView.image == nil) {
             shareButton.enabled = false
         }
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -131,7 +125,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
             pickedImageView.image = image
+            //pickedImageView.contentMode = UIViewContentMode.ScaleAspectFit
             shareButton.enabled = true
+            
         }
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -175,6 +171,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             (activity, success, items, error) in
             if (success) {
                 self.dismissViewControllerAnimated(true, completion: nil)
+                self.saveMeme()
             }
         }
         presentViewController(activityViewController, animated: true, completion: saveMeme)

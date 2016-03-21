@@ -29,11 +29,18 @@ class MemeCollectionViewController: UIViewController, UICollectionViewDelegate, 
         collectionView?.reloadData()
     }
     
+    
+    /**
+     Presents the Meme editor to create a new meme
+     */
     func presentMemeEditor() {
-        var memeEditorController:ViewController
-        memeEditorController = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! ViewController
+        var memeEditorController:MemeEditorViewController
+        memeEditorController = storyboard?.instantiateViewControllerWithIdentifier("MemeEditorViewController") as! MemeEditorViewController
         presentViewController(memeEditorController, animated: true, completion: nil)
     }
+    
+    
+    // MARK:- Collection View delegate and data source methods
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return memes.count
