@@ -76,6 +76,7 @@ class MemeTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let memeDetailViewController = storyboard!.instantiateViewControllerWithIdentifier("MemeDetailViewController") as! MemeDetailViewController
         memeDetailViewController.memedImage = memes[indexPath.row].memedImage
+        memeDetailViewController.indexOfSelectedMeme = indexPath.row
         navigationController!.pushViewController(memeDetailViewController, animated: true)
         
     }

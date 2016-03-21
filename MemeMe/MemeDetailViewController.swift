@@ -8,6 +8,7 @@ class MemeDetailViewController: UIViewController {
     @IBOutlet weak var memedImageView: UIImageView!
     
     var memedImage:UIImage!
+    var indexOfSelectedMeme : Int?
     
     
     //When an image is selected this image will fill the image view of this detail view controller
